@@ -1,9 +1,13 @@
-<h1>Events</h1>
+<section class="events-section">
+  <h1>Events</h1>
 
-<% @events.each do |event| %>
-  <div class="event">
-    <h3><%= event.title %></h3>
-    <p><%= event.date %></p>
-    <p><%= event.location %></p>
+  <%= render "event_link" %>
+
+  <%= turbo_stream_from "events" %>
+  <div id="events">
+    <% @events.each do |event| %>
+      <%= render event, event: event %>
+    <% end %>
   </div>
-<% end %>
+
+</section>

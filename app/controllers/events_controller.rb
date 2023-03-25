@@ -14,7 +14,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.turbo_stream
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_event", partial:  "event_link") }
+        format.html { redirect_to @event, notice: "Event was successfully created." }
       else
         format.html do
           flash[:event_errors] = @event.errors.full_messages

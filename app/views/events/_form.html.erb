@@ -1,4 +1,4 @@
-<%= form_with model: @event, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"} do |form| %>
+<%= form_with model: @event, action: "events" do |form| %>
   <% if flash[:event_errors] %>
     <div class="error">
       <ul>
@@ -9,11 +9,21 @@
     </div>
   <% end %>
 
-  <%= form.text_field :title, class: "event_form_title" %>
-  <%= form.text_field :location, class: "event_form_location" %>
-  <%= form.text_datetime_select :title, class: "event_form_title" %>
+  <div class="field">
+    <%= form.label :title, "Event Title:" %>
+    <%= form.text_field :title, class: "event_form_title" %>
+  </div>
+  <div class="field">
+  <%= form.label :location, "Location:" %>
+    <%= form.text_field :location, class: "event_form_location" %>
+  </div>
+  <div class="field">
+    <%= form.label :date, "Date:" %>
+    <%= form.datetime_select :date, class: "event_form_title" %>
+  </div>
 
   <div class="">
     <%= form.submit "Create", class: "event_submit" %>
   </div>
 <% end %>
+
