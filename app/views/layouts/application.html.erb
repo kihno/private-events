@@ -13,6 +13,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <header>
+      <h1 class="hero">Private Events</h2>
+      <ul class="links">
+        <li class="link"><%= link_to "Events", events_path %></li>
+      </ul>
+    </header>
     <main>
       <%= yield %>
     </main>

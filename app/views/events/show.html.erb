@@ -1,0 +1,6 @@
+<main>
+  <h1><%= @event.title %></h1>
+  <p>Hosted by: <%= link_to @event.host.name, profile_path(@event.host) %></p>
+  <h2><%= @event.location %></h2>
+  <h3><%= @event.date %></h3>
+</main>

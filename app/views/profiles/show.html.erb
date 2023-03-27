@@ -1,0 +1,8 @@
+<h1><%= @profile.name %></h1>
+
+<h2>Hosted Events</h2>
+
+<ul class="<%= @profile.id%>_hosted_events">
+  <%= render collection: @profile.hosted_events, partial: "events/event" %>
+</ul>
+

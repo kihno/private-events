@@ -1,5 +1,5 @@
-<%= turbo_frame_tag event do %>
-  <%= event.title %>
-  <%= event.location %>
-  <%= event.date %>
-<% end %>
+<li id="<%= dom_id event %>">
+  <p><%= link_to event.title, event_path(event) %></p>
+  <p><%= event.location %></p>
+  <p><%= event.date %></p>
+</li>

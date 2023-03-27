@@ -3,11 +3,8 @@
 
   <%= render "event_link" %>
 
-  <%= turbo_stream_from "events" %>
   <div id="events">
-    <% @events.each do |event| %>
-      <%= render event, event: event %>
-    <% end %>
+    <%= render @events %>
   </div>
 
 </section>
