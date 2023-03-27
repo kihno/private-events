@@ -9,18 +9,20 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(tweet_params)
-    @event.host = current_user
+    @event = Event.new(event_params)
+    current_user.hosted_events << @event
 
     respond_to do |format|
       if @event.save
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_event", partial:  "event_link") }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_event", partial: "event_link") }
         format.html { redirect_to @event, notice: "Event was successfully created." }
       else
-        format.html do
-          flash[:event_errors] = @event.errors.full_messages
-          redirect_to root_path
-        end
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@event)}_form", partial: "form", locals: { event: @event }) }
+        format.html { render :new, status: :unprocessabile_entity }
+        # format.html do
+        #   flash[:event_errors] = @event.errors.full_messages
+        #   redirect_to root_path
+        # end
       end
     end
   end

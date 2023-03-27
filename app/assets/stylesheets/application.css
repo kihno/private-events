@@ -14,7 +14,11 @@
  *= require_self
  */
 
- main {
+ body {
     display: flex;
     justify-content: space-between;
+ }
+
+ .notice, .alert {
+   position: absolute;
  }

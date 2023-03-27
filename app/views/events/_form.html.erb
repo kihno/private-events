@@ -1,9 +1,9 @@
-<%= form_with model: @event, action: "events" do |form| %>
-  <% if flash[:event_errors] %>
+<%= form_with model: event, id: "#{dom_id(event)}_form", url: events_path do |form| %>
+  <% if event.errors.any? %>
     <div class="error">
       <ul>
-        <% flash[:event_errors].each do |error| %>
-          <li><%= error %></li>
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
