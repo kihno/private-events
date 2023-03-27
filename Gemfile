@@ -33,6 +33,9 @@ gem "devise"
 # Integrate devise with hotwire
 gem "responders"
 
+# Bootstrap css
+gem "bootstrap", "~> 5.2.2"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -76,3 +79,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.1"

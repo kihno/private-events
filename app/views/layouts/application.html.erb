@@ -7,29 +7,46 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <header>
-      <h1 class="hero">Private Events</h2>
-      <ul class="links">
-        <li class="link"><%= link_to "Events", events_path %></li>
-      </ul>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-    <aside class="sidebar">
-        <% if user_signed_in? %>
-          <p>Signed in as <%= current_user.name %></p>
-          <%= button_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-        <% else %>
-          <%= link_to "Log In", new_user_session_path %>
-           <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-      </aside>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4 mb-4">
+      <%= link_to "Private Events", events_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <%= link_to "Events", events_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Party People", profiles_path, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <p class="notice position-absolute"><%= notice %></p>
+    <p class="alert position-absolute"><%= alert %></p>
+
+    <div class="container-fluid">
+      <div class="row content">
+        <main class="col-sm-10 p-4">
+          <%= yield %>
+        </main>
+        <aside class="col-sm-2 sidenav">
+          <% if user_signed_in? %>
+            <p>Signed in as <%= current_user.name %></p>
+            <%= button_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+          <% else %>
+            <%= link_to "Log In", new_user_session_path %>
+            <%= link_to "Sign Up", new_user_registration_path %>
+          <% end %>
+        </aside>
+      </div>
+    </div>
   </body>
 </html>
