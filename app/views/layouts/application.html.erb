@@ -40,21 +40,16 @@
     <p class="notice position-absolute"><%= notice %></p>
     <p class="alert position-absolute"><%= alert %></p>
 
-    <div class="container-fluid">
+    <main class="row d-flex justify-content-center p-4">
+      <%= yield %>
+    </main>
+
+    <%# <div class="container-fluid">
       <div class="row content">
         <main class="col-sm-10 p-4">
-          <%= yield %>
+          <%= yield 
         </main>
-        <aside class="col-sm-2 sidenav">
-          <% if user_signed_in? %>
-            <p>Signed in as <%= current_user.name %></p>
-            <%= button_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-          <% else %>
-            <%= link_to "Log In", new_user_session_path %>
-            <%= link_to "Sign Up", new_user_registration_path %>
-          <% end %>
-        </aside>
       </div>
-    </div>
+    </div> %>
   </body>
 </html>
