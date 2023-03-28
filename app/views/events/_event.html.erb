@@ -1,5 +1,5 @@
-<li id="<%= dom_id event %>">
-  <p><%= link_to event.title, event_path(event) %></p>
-  <p><%= event.location %></p>
-  <p><%= event.date %></p>
-</li>
+<tr id="<%= dom_id event %>">
+  <td><%= link_to event.title, event_path(event) %></td>
+  <td><%= event.location %></td>
+  <td><%= event.date.to_formatted_s(:long_ordinal) %></td>
+</tr>

@@ -12,7 +12,7 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4 mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
       <%= link_to "Private Events", events_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,9 +38,9 @@
     </nav>
 
     <p class="notice position-absolute"><%= notice %></p>
-    <p class="alert position-absolute"><%= alert %></p>
+    <p class="alert position-absolute" role="alert"><%= alert %></p>
 
-    <main class="row d-flex justify-content-center p-4">
+    <main class="row d-flex justify-content-center p-4 mt-4">
       <%= yield %>
     </main>
 
