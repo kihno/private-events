@@ -1,4 +1,4 @@
 <%= turbo_frame_tag "new_event" do %>
-  <%= link_to "X", root_path %>
+  <%= link_to "", root_path, class: "btn-close me-1" %>
   <%= render "form", event: Event.new %>
 <% end %>

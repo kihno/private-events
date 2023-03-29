@@ -1,0 +1,2 @@
+class EventInvitesController < ApplicationController
+end

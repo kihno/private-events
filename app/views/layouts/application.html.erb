@@ -27,29 +27,34 @@
           </li>
         </ul>
         <div class="nav navbar-nav ms-auto">
-          <div class="nav-item">
-            <%= link_to "Log In", new_user_session_path, class: "nav-link mr-4" %>
-          </div>
-          <div class="nav-item">
-            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary sign-up-btn" %>
-          </div>
+          <% if current_user %>
+            <div class="navbar-text">
+              <p class="me-2">Logged in as <%= link_to "#{current_user.name}", profile_path(current_user) %></p>
+            </div>
+            <div class="nav-item">
+              <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary sign-out-btn" %>
+            </div>
+          <% else %>
+            <div class="nav-item">
+              <%= link_to "Log In", new_user_session_path, class: "nav-link mr-4" %>
+            </div>
+            <div class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary sign-up-btn" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </nav>
 
-    <p class="notice position-absolute"><%= notice %></p>
-    <p class="alert position-absolute" role="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="notice alert alert-success position-absolute row col-12"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-warning position-absolute row col-12" role="alert"><%= alert %></p>
+    <% end %>
 
     <main class="row d-flex justify-content-center p-4 mt-4">
       <%= yield %>
     </main>
-
-    <%# <div class="container-fluid">
-      <div class="row content">
-        <main class="col-sm-10 p-4">
-          <%= yield 
-        </main>
-      </div>
-    </div> %>
   </body>
 </html>

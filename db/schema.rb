@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_184846) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_29_224814) do
+  create_table "event_invites", force: :cascade do |t|
+    t.integer "event_guest_id"
+    t.integer "invited_event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "location"
     t.datetime "date"

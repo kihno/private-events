@@ -1,4 +1,4 @@
-<%= form_with model: event, id: "#{dom_id(event)}_form", url: events_path do |form| %>
+<%= form_with model: event, id: "#{dom_id(event)}_form", url: events_path, class: "d-inline-flex gap-1 mt-3 mb-3" do |form| %>
   <% if event.errors.any? %>
     <div class="error">
       <ul>
@@ -9,21 +9,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group d-inline-flex align-items-center mb-4">
     <%= form.label :title, "Event Title:" %>
     <%= form.text_field :title, class: "event_form_title" %>
   </div>
-  <div class="field">
+  <div class="field form-group d-inline-flex align-items-center mb-4">
   <%= form.label :location, "Location:" %>
     <%= form.text_field :location, class: "event_form_location" %>
   </div>
-  <div class="field">
+  <div class="field form-group d-inline-flex align-items-center mb-4">
     <%= form.label :date, "Date:" %>
     <%= form.datetime_select :date, class: "event_form_title" %>
   </div>
 
   <div class="">
-    <%= form.submit "Create", class: "event_submit" %>
+    <%= form.submit class: "event_submit btn btn-primary" %>
   </div>
 <% end %>
 

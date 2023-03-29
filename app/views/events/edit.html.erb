@@ -1,0 +1,4 @@
+<%= turbo_frame_tag dom_id(@event) do %>
+  <%= link_to event_path, class: "btn-close me-1" %>
+  <%= render "form", event: @event, locals: { url: edit_event_path, method: :put } %>
+<% end %>

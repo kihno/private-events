@@ -1,6 +1,23 @@
 <main>
   <h1><%= @event.title %></h1>
+
   <p>Hosted by: <%= link_to @event.host.name, profile_path(@event.host) %></p>
-  <h2><%= @event.location %></h2>
-  <h3><%= @event.date %></h3>
+
+  <h3><%= @event.location %></h3>
+  <h4 class="mb-4"><%= @event.date.to_formatted_s(:long_ordinal) %></h4>
+
+  <h2>Guests:</h2>
+
+  <ul>
+    <% @event.guests.each do |guest| %>
+      <li><%= link_to guest.name, profile_path(guest) %></li>
+    <% end %>
+  </ul>
+
+  <% if user_signed_in? && current_user == @event.host %>
+    <div class="d-inline-flex align-items-center mt-4">
+      <%= link_to "Edit", edit_event_path(@event) %>
+      <%= button_to "Delete", event_path(@event), method: :delete, data: { turbo_confirm: "Are you sure you want to delete this event?" },  class: "btn btn-danger" %>
+    </div>
+  <% end %>
 </main>

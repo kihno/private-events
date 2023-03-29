@@ -1,3 +1,7 @@
-<%= turbo_stream.prepend "events" do %>
-  <%= render "event", event: @event %>
+<%= turbo_stream.append "events" do %>
+  <%= render "event", event: @event user: current_user %>
+<% end %>
+
+<%= turbo_stream.replace "new_event" do %>
+  <% render "event_link" %>
 <% end %>

@@ -1,3 +1,2 @@
- <%= turbo_frame_tag "new_event" do %>
-    <%= link_to "New Event", new_event_path, class: "btn btn-primary mt-4 mb-4" %>
-  <% end %>
+<%= link_to "New Event", new_event_path, class: "btn btn-primary mt-3 mb-3", data: { turbo: current_user ? true : false } %>
+

@@ -1,1 +1,7 @@
-<h1>All Users</h1>
+<h1>Party People</h1>
+
+<ul>
+  <% @profiles.each do |profile| %>
+    <li><%= link_to profile.name, profile_path(profile) %></li>
+  <% end %>
+</ul>

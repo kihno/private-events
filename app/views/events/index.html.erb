@@ -1,9 +1,11 @@
 <section class="events-section">
   <h1>Events</h1>
 
-  <%= render "event_link" %>
+  <%= turbo_frame_tag "new_event" do %>
+    <%= render "event_link" %>
+  <% end %>
 
-  <table class="table" id="events">
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Event</th>
@@ -11,7 +13,7 @@
         <th scope="col">Date</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="events">
       <%= render @events %>
     </tbody>
   </table class="table">
