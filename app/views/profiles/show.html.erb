@@ -4,41 +4,21 @@
   <%= render "events/event_link" %>
 <% end %>
 
-<h3>Hosted Events</h3>
+<div class="my-4">
+  <h3>Hosted Events</h3>
+  <% if @profile.hosted_events.empty? %>
+    <p>This user hasn't hosted any events yet.</p>
+  <% else %>
+    <%= render partial: "events/event_table", locals: { events: @profile.hosted_events } %>
+  <% end %>
+</div>
 
-<% if @profile.hosted_events.empty? %>
-  <p>This user hasn't hosted any events yet.</p>
-<% else %>
-  <table class="table" id="hosted_events">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Event</th>
-        <th scope="col">Location</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render collection: @profile.hosted_events, partial: "events/event" %>
-    </tbody>
-  </table class="table">
-<% end %>
-
-<h3>Invited Events</h3>
-
-<% if @profile.invited_events.empty? %>
-  <p>This user hasn't attended any events yet.</p>
-<% else %>
-  <table class="table" id="hosted_events">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Event</th>
-        <th scope="col">Location</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render collection: @profile.invited_events, partial: "events/event" %>
-    </tbody>
-  </table class="table">
-<% end %>
+<div class="my-4">
+  <h3>Invited Events</h3>
+  <% if @profile.invited_events.empty? %>
+    <p>This user hasn't attended any events yet.</p>
+  <% else %>
+    <%= render partial: "events/event_table", locals: { events: @profile.invited_events } %>
+  <% end %>
+</div>
 

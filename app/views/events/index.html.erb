@@ -5,17 +5,10 @@
     <%= render "event_link" %>
   <% end %>
 
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Event</th>
-        <th scope="col">Location</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody id="events">
-      <%= render @events %>
-    </tbody>
-  </table class="table">
+  <% if @events %>
+    <%= render partial: "event_table", locals: { events: @events } %>
+  <% else %>
+    <p>There are no events yet.</p>
+  <% end %>
 
 </section>
