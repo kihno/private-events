@@ -1,7 +1,5 @@
 <tr id="<%= "#{dom_id event}_record" %>">
-
     <td><%= link_to event.title, event_path(event) %></td>
     <td><%= event.location %></td>
     <td><%= event.date.to_formatted_s(:long_ordinal) %></td>
-
 </tr>

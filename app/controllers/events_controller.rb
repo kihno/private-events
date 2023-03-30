@@ -32,11 +32,13 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @article.update(article_params)
-      format.html { redirect_to @event, notice: "Event was successfully updated." }
-    else
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(helpers.dom_id(@event), partial: "form", locals: { event: @event }) }
-      format.html { render :new, status: :unprocessabile_entity }
+    respond_to do |format|
+      if @event.update(event_params)
+        format.html { redirect_to @event, notice: "Event was successfully updated." }
+      else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(helpers.dom_id(@event), partial: "form", locals: { event: @event }) }
+        format.html { render :new, status: :unprocessabile_entity }
+      end
     end
   end
 

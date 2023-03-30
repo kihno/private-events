@@ -1,5 +1,5 @@
 <%= turbo_stream.append "events" do %>
-  <%= render "event", event: @event user: current_user %>
+  <%= render "event", event: @event %>
 <% end %>
 
 <%= turbo_stream.replace "new_event" do %>
