@@ -1,6 +1,6 @@
 <h1>Party People</h1>
 
-<ul>
+<ul class="list-unstyled ms-4">
   <% @profiles.each do |profile| %>
     <li><%= link_to profile.name, profile_path(profile) %></li>
   <% end %>

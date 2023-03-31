@@ -6,7 +6,7 @@
   <h3><%= @event.location %></h3>
   <h4 class="mb-4"><%= @event.date.to_formatted_s(:long_ordinal) %></h4>
 
-  <h2>Guests:</h2>
+  <h3>Guests:</h3>
 
   <ul>
     <% @event.guests.each do |guest| %>
@@ -14,8 +14,14 @@
     <% end %>
   </ul>
 
+  <% if @event.guests.include?(current_user)%>
+    <%= button_to "Leave Party", event_invite_path, method: :delete, params: { event_invite: {invited_event_id: @event, event_guest_id: current_user} } %>
+  <% else %>
+    <%= button_to "Join Party", event_invites_path, params: { event_invite: {invited_event_id: @event, event_guest_id: current_user} } %>
+  <% end %>
+
   <% if user_signed_in? && current_user == @event.host %>
-    <div class="d-inline-flex align-items-center mt-4">
+    <div class="d-inline-flex align-items-center gap-3 mt-4">
       <%= link_to "Edit", edit_event_path(@event) %>
       <%= button_to "Delete", event_path(@event), method: :delete, data: { turbo_confirm: "Are you sure you want to delete this event?" },  class: "btn btn-danger" %>
     </div>
