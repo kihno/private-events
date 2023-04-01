@@ -1,24 +1,26 @@
-<h1><%= @profile.name %></h1>
+<section>
+  <h1><%= @profile.name %></h1>
 
-<% if current_user && current_user.id == @profile.id %>
-  <%= render "events/event_link" %>
-<% end %>
-
-<div class="my-4">
-  <h3>Hosted Events</h3>
-  <% if @profile.hosted_events.empty? %>
-    <p>This user hasn't hosted any events yet.</p>
-  <% else %>
-    <%= render partial: "events/event_table", locals: { events: @profile.hosted_events } %>
+  <% if current_user && current_user.id == @profile.id %>
+    <%= render "events/event_link" %>
   <% end %>
-</div>
 
-<div class="my-4">
-  <h3>Invited Events</h3>
-  <% if @profile.invited_events.empty? %>
-    <p>This user hasn't attended any events yet.</p>
-  <% else %>
-    <%= render partial: "events/event_table", locals: { events: @profile.invited_events } %>
-  <% end %>
-</div>
+  <div class="my-4">
+    <h3>Hosted Events</h3>
+    <% if @profile.hosted_events.empty? %>
+      <p>This user hasn't hosted any events yet.</p>
+    <% else %>
+      <%= render partial: "events/event_table", locals: { events: @profile.hosted_events } %>
+    <% end %>
+  </div>
+
+  <div class="my-4">
+    <h3>Invited Events</h3>
+    <% if @profile.invited_events.empty? %>
+      <p>This user hasn't attended any events yet.</p>
+    <% else %>
+      <%= render partial: "events/event_table", locals: { events: @profile.invited_events } %>
+    <% end %>
+  </div>
+</section>
 

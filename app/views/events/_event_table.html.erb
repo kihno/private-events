@@ -1,12 +1,35 @@
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Event</th>
-        <th scope="col">Location</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody id="events">
-      <%= render events %>
-    </tbody>
+<h5>Upcoming Events</h5>
+<% if events.upcoming_events.empty? %>
+  <p>No events yet.</p>
+<% else %>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Event</th>
+          <th scope="col">Location</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody id="events">
+        <%= render events.upcoming_events %>
+      </tbody>
   </table class="table">
+<% end %>
+
+<h5>Past Events</h5>
+<% if events.past_events.empty? %>
+  <p>No events yet.</p>
+<% else %>
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Event</th>
+          <th scope="col">Location</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody id="events">
+        <%= render events.past_events %>
+      </tbody>
+  </table class="table">
+<% end %>
