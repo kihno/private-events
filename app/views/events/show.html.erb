@@ -6,7 +6,12 @@
   <h3><%= @event.location %></h3>
   <h4 class="mb-4"><%= @event.date.to_formatted_s(:long_ordinal) %></h4>
 
-  <h3>Guests:</h3>
+  <div class="d-inline-flex align-items-center gap-3">
+    <h3>Guests:</h3>
+    <% if user_signed_in? && current_user == @event.host %>
+      <%= link_to "Edit Guestlist", event_guests_path(@event) %>
+    <% end %>
+  </div>
 
   <% if @event.guests.empty? %>
     <p>No guests have joined this party yet. Get this party started and join!</p>

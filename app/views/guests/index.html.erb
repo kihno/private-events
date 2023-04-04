@@ -1,0 +1,18 @@
+<h1><%= @event.title %> Guest List</h1>
+
+<%= form_with model: @event, url: "/events/#{@event.id}", method: :patch do |form| %>
+  <%= hidden_field_tag "event[guest_ids][]", nil %>
+
+  <% @users.each do |user| %>
+    <%= check_box_tag "event[guest_ids][]", user.id, @event.guests.include?(user), id: "user_#{user.id}" %>
+    <%= label_tag dom_id(user), user.name %><br>
+  <% end %>
+
+  <%= form.hidden_field :title, value: @event.title %>
+  <%= form.hidden_field :location, value: @event.location %>
+  <%= form.hidden_field :date, value: @event.date %>
+
+  <div class="mt-3">
+    <%= form.submit class: "event_submit btn btn-primary" %>
+  </div>
+<% end %>
